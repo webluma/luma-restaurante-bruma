@@ -9,26 +9,20 @@ export function SiteFooter() {
           <div className="footer-hero">
             <div className="footer-hero__copy">
               <p className="footer-label">Bruma</p>
-              <h2>
-                Um lugar para vinho, cozinha sazonal e noites que se estendem.
-              </h2>
-              <p>
-                Um encerramento direto, com presença de marca e caminhos claros
-                para reserva, contato e visita.
-              </p>
+              <p className="footer-tagline">{siteMeta.tagline}</p>
             </div>
             <div className="footer-hero__actions">
               <a
                 className="button-primary button-primary-light"
                 href={siteMeta.whatsapp}
               >
-                Reservar uma mesa
+                Reservar mesa
               </a>
               <Link
                 className="button-secondary button-secondary-dark"
                 href="/contato"
               >
-                Entrar em contato
+                Contato
               </Link>
             </div>
           </div>
@@ -46,14 +40,11 @@ export function SiteFooter() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/contato#reserva-form" className="footer-link">
-                  Reservar
-                </Link>
               </nav>
             </div>
 
             <div className="footer-column footer-column--info">
-              <p className="footer-label">Informações</p>
+              <p className="footer-label">Contato</p>
               <address className="footer-contact">
                 <span>{siteMeta.address}</span>
                 <span>{siteMeta.hours}</span>
@@ -72,9 +63,14 @@ export function SiteFooter() {
 
           <div className="footer-bottom">
             <p>
-              Bruma · presença institucional para reservas, contato e visita.
+              © 2026 Criado e desenvolvido por{" "}
+              <strong>WebLuma Tecnologia LTDA</strong>. Todos os direitos
+              reservados.
             </p>
-            <p>{siteMeta.tagline}</p>
+            <p>
+              Consultoria financeira estratégica para empresas, ao vivo e
+              online.
+            </p>
           </div>
         </div>
       </div>
