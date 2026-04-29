@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ReviewCarousel } from "./_components/review-carousel";
 import {
   clientReviews,
-  credibilityItems,
   galleryImages,
   heroImages,
   homeMenuHighlights,
@@ -21,95 +20,109 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="home-page bg-[var(--color-cream)] text-[var(--color-ink)]">
-      <section id="top" className="home-hero">
-        <Image
-          src={heroImages[0].src}
-          alt={heroImages[0].alt}
-          fill
-          priority
-          sizes="100vw"
-          className="home-hero__image"
-        />
-        <div className="home-hero__shade" />
-        <div className="home-hero__mist" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="home-hero__content">
+      <section id="top" className="home-cover">
+        <div className="home-cover__copy">
           <p className="home-kicker">Wine bar · cozinha sazonal · Curitiba</p>
           <h1>Bruma</h1>
-          <p className="home-hero__copy">
-            Vinho, pratos de estação e encontros sem pressa.
+          <p>
+            Uma casa para chegar devagar, escolher bem e ficar um pouco mais.
           </p>
           <div className="home-hero__actions">
             <Link className="button-primary" href="/contato#reserva-form">
               Reservar mesa
             </Link>
-            <Link className="button-secondary button-secondary-dark" href="/menu">
+            <Link className="button-secondary" href="/menu">
               Ver menu
             </Link>
           </div>
         </div>
-        <div className="home-hero__foot">
-          <span>Qua a dom · 18h</span>
-          <span>Batel · Curitiba</span>
-          <span>Mesas limitadas</span>
+        <div className="home-cover__visual">
+          <Image
+            src={heroImages[0].src}
+            alt={heroImages[0].alt}
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 52vw"
+            className="object-cover"
+          />
         </div>
       </section>
 
-      <section className="home-strip" aria-label="Credenciais do Bruma">
-        {credibilityItems.map((item) => (
-          <span key={item}>{item}</span>
-        ))}
-      </section>
-
-      <section className="home-statement">
+      <section className="home-manifesto">
         <div>
           <p className="home-kicker">Conceito</p>
-          <h2>
-            Uma casa pequena, quente e precisa.
-          </h2>
+          <h2>Entre a taça, o prato e a pausa.</h2>
         </div>
-        <div className="home-statement__aside">
+        <p>
+          Bruma existe para noites de luz baixa, cozinha de estação e conversas
+          que não precisam terminar cedo.
+        </p>
+      </section>
+
+      <section className="home-about">
+        <div className="home-about__media">
+          <Image
+            src={heroImages[1].src}
+            alt={heroImages[1].alt}
+            fill
+            sizes="(max-width: 900px) 100vw, 38vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="home-about__copy">
+          <div className="home-about__heading">
+            <p className="home-kicker">Sobre o restaurante</p>
+            <h2>Uma casa pequena, feita para noites que amadurecem à mesa.</h2>
+          </div>
+          <div className="home-about__text">
+            <p>
+              Bruma nasce da ideia de um restaurante sem pressa: carta curta,
+              cozinha sazonal e um salão íntimo onde a luz, o serviço e o vinho
+              conduzem a experiência com discrição.
+            </p>
+            <p>
+              A proposta é autoral, mas direta. Poucas escolhas, bons encontros
+              e uma atmosfera pensada para fazer o tempo desacelerar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-table-note">
+        <div>
+          <p className="home-kicker">À mesa</p>
+          <h2>O ritmo da noite é parte do menu.</h2>
+        </div>
+        <div className="home-table-note__list">
           <p>
-            A experiência acontece no intervalo entre a taça, o prato e a pausa.
+            <span></span>
+            Uma carta curta para escolher sem ruído.
           </p>
-          <span>Luz baixa</span>
-          <span>Cozinha sazonal</span>
-          <span>Conversa sem pressa</span>
+          <p>
+            <span></span>
+            Pratos que acompanham mercado, clima e estação.
+          </p>
+          <p>
+            <span></span>
+            Serviço atento, luz baixa e tempo para permanecer.
+          </p>
         </div>
       </section>
 
-      <section className="home-senses">
-        <div>
-          <p className="home-kicker">Vinho</p>
-          <h3>Carta curta. Escolhas vivas.</h3>
-        </div>
-        <div>
-          <p className="home-kicker">Cozinha</p>
-          <h3>Estação, textura e calor.</h3>
-        </div>
-        <div>
-          <p className="home-kicker">Tempo</p>
-          <h3>Uma noite para ficar.</h3>
-        </div>
-      </section>
-
-      <section className="home-menu-feature">
-        <div className="home-menu-feature__media">
+      <section className="home-carte">
+        <div className="home-carte__image">
           <Image
             src={galleryImages[1].src}
             alt={galleryImages[1].alt}
             fill
-            sizes="(max-width: 900px) 100vw, 48vw"
+            sizes="(max-width: 900px) 100vw, 42vw"
             className="object-cover"
           />
         </div>
-        <div className="home-menu-feature__content">
+        <div className="home-carte__copy">
           <p className="home-kicker">Menu da estação</p>
-          <h2>Pratos que mudam com o mercado. Vinhos que prolongam a conversa.</h2>
-          <div className="home-menu-list">
+          <h2>Pratos de mercado, feitos para acompanhar a taça.</h2>
+          <div className="home-carte__list">
             {homeMenuHighlights.map((item) => (
               <article key={item.title}>
                 <span>{item.course}</span>
@@ -124,19 +137,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="home-atmosphere">
-        <div className="home-atmosphere__intro">
+      <section className="home-salon">
+        <div className="home-salon__intro">
           <p className="home-kicker">Atmosfera</p>
           <h2>Luz baixa, mesa próxima, conversa longa.</h2>
         </div>
-        <div className="home-atmosphere__grid">
-          {galleryImages.slice(0, 4).map((image) => (
+        <div className="home-salon__grid">
+          {galleryImages.slice(0, 5).map((image) => (
             <figure key={image.src}>
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 900px) 50vw, 25vw"
+                sizes="(max-width: 900px) 50vw, 24vw"
                 className="object-cover"
               />
               <figcaption>{image.label}</figcaption>
@@ -153,12 +166,10 @@ export default function HomePage() {
         <ReviewCarousel reviews={clientReviews} />
       </section>
 
-      <section className="home-reserve">
-        <div className="home-reserve__heading">
+      <section className="home-booking">
+        <div className="home-booking__copy">
           <p className="home-kicker">Reservas</p>
           <h2>Uma mesa para chegar devagar.</h2>
-        </div>
-        <div className="home-reserve__details">
           <dl>
             {reservations.map((item) => (
               <div key={item.label}>
@@ -171,7 +182,10 @@ export default function HomePage() {
             Solicitar reserva
           </Link>
         </div>
-        <div className="home-reserve__map" aria-label="Localização do Bruma em Curitiba">
+        <div
+          className="home-booking__map"
+          aria-label="Localização do Bruma em Curitiba"
+        >
           <iframe
             title="Mapa de localização do Bruma"
             src={siteMeta.mapEmbed}

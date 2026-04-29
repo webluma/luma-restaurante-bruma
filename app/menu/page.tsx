@@ -15,124 +15,142 @@ export const metadata: Metadata = {
 };
 
 export default function MenuPage() {
-  const featuredItem = menuSections[1].items[0];
+  const allItems = menuSections.flatMap((section) =>
+    section.items.map((item) => ({ ...item, section: section.name })),
+  );
+  const featuredItems = allItems.filter((item) => item.seasonal).slice(0, 3);
 
   return (
-    <main className="subpage bg-[var(--color-cream)] text-[var(--color-ink)]">
-      <section className="page-hero page-hero--menu">
-        <Image
-          src={galleryImages[1].src}
-          alt={galleryImages[1].alt}
-          fill
-          priority
-          sizes="100vw"
-          className="page-hero__image"
-        />
-        <div className="page-hero__shade" />
-        <div className="page-hero__content">
+    <main className="menu-page bg-[var(--color-cream)] text-[var(--color-ink)]">
+      <section className="menu-cover">
+        <div className="menu-cover__copy">
           <p className="home-kicker">Menu da estação</p>
-          <h1>Uma carta curta para escolher com calma.</h1>
+          <h1>Uma carta curta. Um ritmo de mesa.</h1>
           <p>
-            Pratos de mercado, vinhos de textura e uma leitura clara do que vale
-            pedir agora.
+            Pratos de mercado, vinho escolhido sem pressa e uma cozinha que muda
+            conforme a estação.
           </p>
           <div className="home-hero__actions">
-            <Link className="button-primary" href="/contato#reserva-form">
+            <a className="button-primary" href="#carta">
+              Ver carta
+            </a>
+            <Link className="button-secondary" href="/contato#reserva-form">
               Reservar mesa
             </Link>
-            <a className="button-secondary button-secondary-dark" href="#menu-lista">
-              Ver pratos
-            </a>
           </div>
         </div>
-      </section>
-
-      <section className="menu-note" aria-label="Nota sobre sazonalidade">
-        <span>Menu sujeito à estação</span>
-        <span>Pequenos lotes de mercado</span>
-        <span>Carta viva de vinhos</span>
-      </section>
-
-      <section className="menu-featured">
-        <div className="menu-featured__copy">
-          <p className="home-kicker">Destaque</p>
-          <h2>{featuredItem.title}</h2>
-          <p>{featuredItem.detail}</p>
-        </div>
-        <div className="menu-featured__image">
+        <div className="menu-cover__visual">
           <Image
-            src={featuredItem.image}
-            alt={featuredItem.title}
+            src={galleryImages[1].src}
+            alt={galleryImages[1].alt}
             fill
-            sizes="(max-width: 900px) 100vw, 42vw"
+            priority
+            sizes="(max-width: 900px) 100vw, 46vw"
             className="object-cover"
           />
         </div>
       </section>
 
-      <section id="menu-lista" className="menu-board" aria-label="Menu completo">
-        {menuSections.map((section) => (
-          <section key={section.name} className="menu-board__section">
-            <div className="menu-board__head">
-              <p className="home-kicker">Categoria</p>
-              <h2>{section.name}</h2>
-            </div>
-            <div className="menu-list">
-              {section.items.map((item) => (
-                <article key={item.title} className="menu-entry">
-                  <div className="menu-entry__image">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 900px) 100vw, 180px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="menu-entry__content">
-                    <div className="menu-entry__title">
-                      <h3>{item.title}</h3>
-                      {item.seasonal ? (
-                        <span className="season-badge">Da estação</span>
-                      ) : null}
-                    </div>
-                    <p>{item.detail}</p>
-                  </div>
-                  <p className="menu-price">R$ {item.price}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-      </section>
-
-      <section className="wine-editorial">
+      <section className="menu-season">
         <div>
-          <p className="home-kicker">Carta de vinhos</p>
-          <h2>Taças e garrafas para prolongar a conversa.</h2>
+          <p className="home-kicker">Da estação</p>
+          <h2>Três pontos de partida para a noite.</h2>
         </div>
-        <div className="wine-editorial__list">
-          {wineSelections.map((item) => (
-            <article key={item.label}>
-              <span>{item.label}</span>
-              <p>{item.text}</p>
+        <div className="menu-season__grid">
+          {featuredItems.map((item) => (
+            <article key={item.title}>
+              <div className="menu-season__image">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+              <span>{item.section}</span>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="subpage-cta">
-        <div>
-          <p className="home-kicker">Reserva</p>
-          <h2>Consulte o menu da estação à mesa.</h2>
+      <section id="carta" className="menu-ledger" aria-label="Carta do Bruma">
+        <div className="menu-ledger__intro">
+          <p className="home-kicker">Carta</p>
+          <h2>Escolhas enxutas, leitura clara.</h2>
+          <p>O menu pode variar conforme mercado, safra e disponibilidade.</p>
         </div>
-        <div className="subpage-cta__actions">
-          <Link className="button-primary" href="/contato#reserva-form">
-            Reservar agora
-          </Link>
-          <a className="button-secondary" href={siteMeta.whatsapp}>
-            Falar com a casa
+        <div className="menu-ledger__sections">
+          {menuSections.map((section) => (
+            <section key={section.name} className="menu-ledger__section">
+              <h3>{section.name}</h3>
+              <div className="menu-ledger__items">
+                {section.items.map((item) => (
+                  <article key={item.title} className="menu-ledger__item">
+                    <div>
+                      <div className="menu-ledger__title">
+                        <h4>{item.title}</h4>
+                        {item.seasonal ? <span>Estação</span> : null}
+                      </div>
+                      <p>{item.detail}</p>
+                    </div>
+                    <strong>R$ {item.price}</strong>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section className="menu-wine">
+        <div className="menu-wine__image">
+          <Image
+            src={galleryImages[3].src}
+            alt={galleryImages[3].alt}
+            fill
+            sizes="(max-width: 900px) 100vw, 38vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="menu-wine__copy">
+          <p className="home-kicker">Vinhos</p>
+          <h2>Uma carta viva, curta e gastronômica.</h2>
+          <div className="menu-wine__list">
+            {wineSelections.map((item) => (
+              <article key={item.label}>
+                <span>{item.label}</span>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <a className="button-primary" href={siteMeta.whatsapp}>
+            Perguntar sobre a carta
           </a>
+        </div>
+      </section>
+      <section className="contact-visit">
+        <div className="contact-visit__copy">
+          <h2>Batel, Curitiba.</h2>
+          <p>{siteMeta.address}</p>
+          <div className="contact-visit__links">
+            <a href={`tel:${siteMeta.phone}`}>{siteMeta.phone}</a>
+            <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+            <a href={siteMeta.instagram}>Instagram</a>
+          </div>
+          <Link className="button-secondary" href="/menu">
+            Ver menu
+          </Link>
+        </div>
+        <div className="contact-visit__map">
+          <iframe
+            title="Mapa de localização do Bruma"
+            src={siteMeta.mapEmbed}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </main>

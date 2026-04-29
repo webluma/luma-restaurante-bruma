@@ -3,12 +3,12 @@ export const siteMeta = {
   tagline: "Vinho, cozinha sazonal e encontros sem pressa.",
   description:
     "Wine bar e restaurante autoral com cozinha sazonal, carta viva e atmosfera intimista para noites sem pressa.",
-  address: "Alameda Presidente Taunay, 543 · Batel · Curitiba, PR",
+  address: "Batel · Curitiba, PR",
   hours: "Quarta a domingo · 18h às 00h",
-  phone: "+55 (11) 99999-9999",
-  email: "reservas@bruma.com",
-  instagram: "https://instagram.com/bruma.sp",
-  whatsapp: "https://wa.me/5511999999999",
+  phone: "+55 (41) 00000-0000",
+  email: "hello@webluma.tech",
+  instagram: "https://instagram.com/",
+  whatsapp: "https://wa.me/5541000000000",
   mapEmbed:
     "https://www.google.com/maps?q=Batel%20Curitiba%20PR&z=14&output=embed",
 };
@@ -140,16 +140,14 @@ export const menuSections = [
         detail: "Terroso, ácido e luminoso.",
         price: "46",
         seasonal: true,
-        image:
-          "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?cs=srgb&dl=pexels-ella-olsson-572949-5638732.jpg&fm=jpg",
+        image: "/menu/beterraba-assada.png",
       },
       {
         title: "Crudo do dia com azeite verde e casca de limão",
         detail: "Fresco, mineral e de textura limpa.",
         price: "58",
         seasonal: true,
-        image:
-          "https://images.pexels.com/photos/32962802/pexels-photo-32962802.jpeg?cs=srgb&dl=pexels-kseniachernaya-32962802.jpg&fm=jpg",
+        image: "/menu/crudo-do-dia.png",
       },
     ],
   },
@@ -161,8 +159,7 @@ export const menuSections = [
         detail: "Camadas profundas, final aveludado.",
         price: "78",
         seasonal: true,
-        image:
-          "https://images.pexels.com/photos/6941037/pexels-photo-6941037.jpeg?cs=srgb&dl=pexels-catscoming-6941037.jpg&fm=jpg",
+        image: "/menu/arroz-de-cogumelos.png",
       },
       {
         title: "Peixe do dia, ervas quentes e legumes da estação",
