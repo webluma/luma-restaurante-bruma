@@ -6,7 +6,7 @@ export const siteMeta = {
   address: "Batel · Curitiba, PR",
   hours: "Quarta a domingo · 18h às 00h",
   phone: "+55 (41) 00000-0000",
-  email: "hello@webluma.tech",
+  email: "webluma.dev@gmail.com",
   instagram: "https://instagram.com/",
   whatsapp: "https://wa.me/5541000000000",
   mapEmbed:
